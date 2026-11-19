@@ -7,5 +7,5 @@ sites:
     url: https://api.github.com
   - name: Google
     url: https://www.google.com
-  - name: Wikipedia
-    url: https://www.wikipedia.org
+  - name: Not Exists
+    url: https://github.com/this-page-does-not-exist-12345
