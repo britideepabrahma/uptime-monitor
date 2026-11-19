@@ -34,21 +34,21 @@ async function load() {
     const uptime = (100 * s.checks.filter(c => c.up).length / s.checks.length).toFixed(2);
     const times = s.checks.filter(c => c.ms !== null).map(c => c.ms);
     const avg = times.length ? Math.round(times.reduce((a, b) => a + b, 0) / times.length) : "-";
-    const bars = s.checks.slice(-48).map(c =>
+    const bars = s.checks.slice(-120).map(c =>
       `<div class="bar" title="${c.t} · ${c.up ? c.ms + ' ms' : 'down'}"
             style="background:${c.up ? '#22c55e' : '#ef4444'}"></div>`).join("");
     return `<div class="card">
       <div class="head"><a href="${s.url}">${s.name}</a>
         <span class="badge ${last.up ? 'up' : 'down'}">${last.up ? 'Operational' : 'Down'}</span></div>
       <div class="bars">${bars}</div>
-      <div class="muted">${uptime}% uptime (7 days) · avg ${avg} ms</div></div>`;
+      <div class="muted">${uptime}% uptime (30 days) · avg ${avg} ms</div></div>`;
   }).join("");
 
-  const labels = data.sites[0].checks.slice(-48).map(c => c.t.slice(11, 16));
+  const labels = data.sites[0].checks.slice(-48).map(c => c.t.slice(5, 16));
   new Chart(chart, {
     type: "line",
     data: {labels, datasets: data.sites.map(s => ({
-      label: s.name, data: s.checks.slice(-48).map(c => c.ms), pointRadius: 0, tension: 0.3}))},
+      label: s.name, data: s.checks.slice(-120).map(c => c.ms), pointRadius: 0, tension: 0.3}))},
     options: {
       plugins: {title: {display: true, text: "Response time (ms)", color: "#e2e8f0"},
                 legend: {labels: {color: "#e2e8f0"}}},

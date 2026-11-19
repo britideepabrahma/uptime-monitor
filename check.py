@@ -8,7 +8,7 @@ import requests
 import yaml
 
 DATA = Path("docs/data/history.json")
-MAX_ENTRIES = 336  # 7 days at 30-minute intervals
+MAX_ENTRIES = 120  # 7 days at 30-minute intervals
 REPO = os.getenv("GITHUB_REPOSITORY")
 TOKEN = os.getenv("GITHUB_TOKEN")
 API = f"https://api.github.com/repos/{REPO}/issues"
