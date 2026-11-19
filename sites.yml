@@ -1,0 +1,11 @@
+sites:
+  - name: DevOps Dashboard
+    url: https://britideepabrahma.github.io/devops-dashboard/
+  - name: GitHub
+    url: https://github.com
+  - name: GitHub API
+    url: https://api.github.com
+  - name: Google
+    url: https://www.google.com
+  - name: Wikipedia
+    url: https://www.wikipedia.org
